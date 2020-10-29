@@ -14,7 +14,7 @@
         "input": "range",
         "min": 0,
         "max": 300000000,
-        "step": 10,
+        "step": 10000,
         "name": "Population: "
       }
     },
