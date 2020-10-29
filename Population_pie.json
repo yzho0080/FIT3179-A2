@@ -6,7 +6,7 @@
   },
   "title": "Percentage of population in each continent",
   "width": "250",
-  "height": "250",
+  "height": "200",
   "transform": [
     {
       "aggregate": [
