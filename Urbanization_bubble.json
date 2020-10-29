@@ -1,7 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "width":"container",
-  "height":"container",
+ 
   "title": "Urbanization rate vs GDP per capita",
   "data": {
     "url": "https://raw.githubusercontent.com/yzho0080/FIT3179/master/World%20data/world%20data%20with%20continent%20AND%20population.csv"
