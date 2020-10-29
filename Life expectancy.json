@@ -1,0 +1,95 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/yzho0080/FIT3179/master/World%20data/world%20data%20with%20continent%20AND%20population.csv"
+  },
+  "title": "10 countries with top life expactancy in selected continent",
+  "width": 400,
+  "height": 200,
+  "params": [
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "labels": [
+          "Show All",
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "name": "Continent: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum['Life_expectancy'] != null"},
+    {
+      "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+    },
+    {
+      "window": [{"op": "rank", "as": "rank"}],
+      "sort": [{"field": "Life_expectancy", "order": "descending"}]
+    },
+    {"filter": "datum.rank <= 10"},
+    {
+      "joinaggregate": [
+        {"op": "mean", "field": "Life_expectancy", "as": "AverageRating"}
+      ]
+    }
+  ],
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "Life_expectancy",
+          "type": "quantitative",
+          "title": "Life expectancy"
+        },
+        "y": {"field": "Country", "type": "ordinal", "sort": "-x"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 3,
+        "size": 8
+      },
+      "encoding": {
+        "x": {
+          "field": "Life_expectancy",
+          "type": "quantitative",
+          "title": "Life expectancy",
+          "sort": "-x"
+        },
+        "y": {"field": "Country", "type": "ordinal"},
+        "text": {"field": "Life_expectancy", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {"type": "rule", "color": "red"},
+      "encoding": {
+        "x": {
+          "aggregate": "average",
+          "field": "AverageRating",
+          "type": "quantitative"
+        }
+      }
+    }
+  ],
+  "config": {}
+}

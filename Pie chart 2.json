@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "description": "A simple pie chart with labels.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/yzho0080/FIT3179/master/World%20data/world%20data%20with%20continent%20AND%20population.csv"
+  },
+  "title": "Percentage of population in each continent",
+  "width": "250",
+  "height": "250",
+  "transform": [
+    {
+      "aggregate": [
+        {"op": "sum", "field": "Population", "as": "Total_population"}
+      ],
+      "groupby": ["Continent"]
+    },
+    {
+      "calculate": "datum.Total_population/7800000000 * 100",
+      "as": "PercentOfTotal"
+    }
+  ],
+  "encoding": {
+    "theta": {
+      "aggregate": "sum",
+      "field": "Total_population",
+      "type": "quantitative",
+      "stack": true
+    },
+    "tooltip": [
+      {"field": "Total_population", "type": "quantitative", "format": ","},
+      {"field": "Continent", "type": "nominal"}
+    ],
+    "color": {
+      "field": "Continent",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "range": [
+          "#e41a1c",
+          "#984ea3",
+          "#ff7f00",
+          "#a6cee3",
+          "#377eb8",
+          "#a65628"
+        ]
+      }
+    }
+  },
+  "layer": [
+    {"mark": {"type": "arc", "outerRadius": 100}},
+    {
+      "mark": {"type": "text", "radius": 120},
+      "encoding": {
+        "text": {
+          "field": "PercentOfTotal",
+          "type": "quantitative",
+          "format": ".2f"
+        }
+      }
+    }
+  ],
+  "view": {"stroke": null},
+  "config": {}
+}
