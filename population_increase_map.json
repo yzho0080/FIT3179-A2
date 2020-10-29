@@ -1,8 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "title": "2020 population growth in each country",
-  "width": 400,
-  "height": 300,
+
   "data": {
     "url": "https://raw.githubusercontent.com/yzho0080/FIT3179/master/World.geo-2.topojson",
     "format": {"type": "topojson", "feature": "World"}
