@@ -4,7 +4,7 @@
     "url": "https://raw.githubusercontent.com/yzho0080/FIT3179/master/World%20data/world%20data%20with%20continent%20AND%20population.csv"
   },
   "title": "10 countries with top life expactancy in selected continent",
-  "width": 400,
+  "width": 600,
   "height": 200,
   "params": [
     {
