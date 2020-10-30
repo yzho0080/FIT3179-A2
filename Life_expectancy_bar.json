@@ -51,7 +51,7 @@
   ],
   "layer": [
     {
-      "mark": "bar",
+     "mark": {"type": "bar", "color": "burlywood"},
       "encoding": {
         "x": {
           "field": "Life_expectancy",
