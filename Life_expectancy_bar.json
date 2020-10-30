@@ -1,3 +1,4 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "data": {
@@ -50,15 +51,22 @@
     }
   ],
   "layer": [
+   
     {
+
+      
+      
+    
      "mark": {"type": "bar", "color": "burlywood"},
       "encoding": {
         "x": {
           "field": "Life_expectancy",
           "type": "quantitative",
-          "title": "Life expectancy"
+          "title": "Life expectancy",
+          "sort":"y"
+          
         },
-        "y": {"field": "Country", "type": "ordinal", "sort": "-x"}
+        "y": {"field": "Country", "type": "ordinal", "sort":"-x"}
       }
     },
     {
@@ -73,11 +81,12 @@
         "x": {
           "field": "Life_expectancy",
           "type": "quantitative",
-          "title": "Life expectancy",
-          "sort": "-x"
+          "title": "Life expectancy"
+         
         },
-        "y": {"field": "Country", "type": "ordinal"},
+        "y": {"field": "Country", "type": "ordinal","sort":"-x"},
         "text": {"field": "Life_expectancy", "type": "quantitative"}
+        
       }
     },
     {
@@ -88,6 +97,7 @@
           "field": "AverageRating",
           "type": "quantitative"
         }
+        
       }
     }
   ],
