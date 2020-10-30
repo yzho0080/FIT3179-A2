@@ -61,7 +61,7 @@
     "y": {
       "field": "Urbanization_rate",
       "type": "quantitative",
-      "title": "Urbanization_rate",
+      "title": "Urbanization rate",
       "axis": {"tickCount": 10},
       "scale": {"type": "", "domain": [1, 100]}
     }
