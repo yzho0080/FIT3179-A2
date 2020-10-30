@@ -5,8 +5,8 @@
     "url": "https://raw.githubusercontent.com/yzho0080/FIT3179/master/World%20data/world%20data%20with%20continent%20AND%20population.csv"
   },
   "title": "Percentage of population in each continent",
-  "width": "250",
-  "height": "200",
+  "width": "350",
+  "height": "280",
   "transform": [
     {
       "aggregate": [
@@ -23,16 +23,20 @@
     "theta": {
       "aggregate": "sum",
       "field": "Total_population",
+      "sort": {"op": "median", "field": "Total_population"},
       "type": "quantitative",
       "stack": true
     },
     "tooltip": [
-      {"field": "Total_population", "type": "quantitative", "format": ","},
-      {"field": "Continent", "type": "nominal"}
+      {"field": "Continent", "type": "nominal"},
+      {"field": "Total_population", "type": "quantitative","title":"Population", "format": ","},
+      
+      {"field":"PercentOfTotal","format":".2f","title":"Percentage"}
     ],
     "color": {
       "field": "Continent",
       "type": "nominal",
+      "legend":null,
       "scale": {
         "domain": [
           "North America",
@@ -50,21 +54,51 @@
           "#377eb8",
           "#a65628"
         ]
+        
       }
-    }
+    },
+      "order": {"field": "PercentOfTotal", "sort": "descending"}
   },
+  
   "layer": [
-    {"mark": {"type": "arc", "outerRadius": 100}},
+    {"mark": {"type": "arc", "outerRadius": 115}},
     {
-      "mark": {"type": "text", "radius": 120},
+      "mark": {"type": "text", "radius": 135,"size":12},
       "encoding": {
         "text": {
-          "field": "PercentOfTotal",
-          "type": "quantitative",
-          "format": ".2f"
+          "field": "Continent",
+          "type": "ordinal"
+          
+        },
+         "opacity": {
+          "condition": {
+            "test": "datum['Continent'] == 'Asia' || datum['Continent'] == 'Europe' || datum['Continent'] == 'Africa'|| datum['Continent'] == 'North America' || datum['Continent'] == 'South America' ",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+
+{
+      "mark": {"type": "text", "radius": 143,"size":12},
+      "encoding": {
+        "text": {
+          "field": "Continent",
+          "type": "ordinal"
+          
+        },
+         "opacity": {
+          "condition": {
+            "test": "datum['Continent'] == 'Oceania'  ",
+            "value": 1
+          },
+          "value": 0
         }
       }
     }
+
+    
   ],
   "view": {"stroke": null},
   "config": {}
