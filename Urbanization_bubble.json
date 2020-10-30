@@ -17,45 +17,19 @@
         "step": 10000,
         "name": "Population: "
       }
-    },
-    {
-      "name": "Continent_selection",
-      "bind": {
-        "input": "select",
-        "options": [
-          null,
-          "North America",
-          "South America",
-          "Europe",
-          "Africa",
-          "Asia",
-          "Oceania"
-        ],
-        "labels": [
-          "Show All",
-          "North America",
-          "South America",
-          "Europe",
-          "Africa",
-          "Asia",
-          "Oceania"
-        ],
-        "name": "Continent: "
-      }
     }
+   
   ],
   "transform": [
-    {"filter": "datum.Population > Population_Above"},
-    {
-      "filter": "Continent_selection == null || datum.Continent == Continent_selection"
-    }
+    {"filter": "datum.Population > Population_Above"}
+    
   ],
   "encoding": {
     "x": {
       "field": "GDP_per_capita",
       "type": "quantitative",
       "title": "GDP per capita",
-      "axis": {"tickCount": 3},
+      "axis": {"tickCount": 2},
       "scale": {"type": "log", "domain": [1, 1000000]}
     },
     "y": {
@@ -77,6 +51,7 @@
       },
       "mark": "circle",
       "encoding": {
+        
         "size": {
           "field": "Population",
           "type": "quantitative",
@@ -85,7 +60,7 @@
             "domain": [1000000, 10000000, 50000000, 100000000, 500000000],
             "range": [10, 50, 150, 200, 300, 400]
           },
-          "legend": {"format": ".1s"}
+          "legend": null
         },
         "color": {
           "field": "Continent",
@@ -136,7 +111,7 @@
         "color": {"value": "black"},
         "opacity": {
           "condition": {
-            "test": "datum['Country'] == 'China' || datum['Country'] == 'Singapore' || datum['Country'] == 'Australia'  || datum['Country'] == 'Yemen' || datum['Country'] == 'Guyana' ",
+            "test": " datum['Country'] == 'Singapore' || datum['Country'] == 'Australia' || datum['Country'] == 'Somalia'   ",
             "value": 1
           },
           "value": 0
