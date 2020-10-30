@@ -29,8 +29,8 @@
       "field": "GDP_per_capita",
       "type": "quantitative",
       "title": "GDP per capita",
-      "axis": {"tickCount": 2},
-      "scale": {"type": "log", "domain": [1, 1000000]}
+      "axis": {"tickCount": 4},
+      "scale": {"type": "log", "domain": [10, 1000000]}
     },
     "y": {
       "field": "Urbanization_rate",
